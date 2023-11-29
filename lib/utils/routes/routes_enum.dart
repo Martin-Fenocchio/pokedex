@@ -1,4 +1,4 @@
 class RoutesList {
-  // Misc
   static String dashboard = '/dashboard';
+  static String pokemonProfile = '/pokemon-profile';
 }

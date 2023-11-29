@@ -12,6 +12,13 @@ class PokemonService {
   Future<Pokemon> getOnePokemon(String url) async {
     final response = await Dio().get(url);
 
-    return Pokemon.fromJson(response.data);
+    final responseSpecies = await Dio().get(
+        "https://pokeapi.co/api/v2/pokemon-species/${response.data['id']}");
+
+    return Pokemon.fromJson({
+      ...response.data,
+      'description': responseSpecies.data['flavor_text_entries'][0]
+          ['flavor_text']
+    });
   }
 }
