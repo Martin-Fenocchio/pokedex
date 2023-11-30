@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/features/dashboard/models/pokemon_model.dart';
 import 'package:pokedex/utils/formatter/formatter_utils.dart';
+import 'package:pokedex/utils/pokemon/pokemon_utils.dart';
 import 'package:pokedex/utils/responsive/responsive.dart';
 import 'package:pokedex/utils/routes/routes_enum.dart';
+import 'package:pokedex/utils/theme/theme.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class PokemonItem extends StatelessWidget {
@@ -18,6 +20,8 @@ class PokemonItem extends StatelessWidget {
     return GestureDetector(
       onTap: () => onTapPokemon(context),
       child: Container(
+          width: 20.w(context),
+          height: 20.w(context),
           decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(15),
@@ -40,7 +44,7 @@ class PokemonItem extends StatelessWidget {
                 top: 1.w(context),
                 right: 2.w(context),
                 child: Text(
-                  '#00${pokemon.id}',
+                  formatID(pokemon.id),
                 ),
               ),
               Positioned(
@@ -50,6 +54,16 @@ class PokemonItem extends StatelessWidget {
                     Image.network(
                       pokemon.picture,
                       width: 20.w(context),
+                      loadingBuilder: (BuildContext context, Widget child,
+                          ImageChunkEvent? loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Container(
+                          margin: EdgeInsets.only(bottom: 2.h(context)),
+                          child: CircularProgressIndicator(
+                            color: colorPmy(context),
+                          ),
+                        );
+                      },
                     ),
                     Container(
                         margin: EdgeInsets.only(

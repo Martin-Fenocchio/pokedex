@@ -61,3 +61,21 @@ String getStatAbbr(String stat) {
       return 'HP';
   }
 }
+
+String formatID(int id) {
+  if (id < 10) {
+    return '#00$id';
+  }
+
+  if (id < 100) {
+    return '#0$id';
+  }
+
+  return '#$id';
+}
+
+String getIdFromUrl(String url) {
+  final List<String> urlSplitted = url.split('/');
+
+  return urlSplitted[urlSplitted.length - 2];
+}

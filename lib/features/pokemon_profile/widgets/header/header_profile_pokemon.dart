@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pokedex/features/dashboard/models/pokemon_model.dart';
 import 'package:pokedex/utils/formatter/formatter_utils.dart';
+import 'package:pokedex/utils/pokemon/pokemon_utils.dart';
 import 'package:pokedex/utils/responsive/responsive.dart';
+import 'package:pokedex/utils/routes/routes_enum.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class HeaderProfilePokemon extends StatelessWidget {
@@ -20,7 +22,7 @@ class HeaderProfilePokemon extends StatelessWidget {
         child: Row(
           children: [
             GestureDetector(
-                onTap: () => Navigator.pop(context),
+                onTap: () => Navigator.pushNamed(context, RoutesList.dashboard),
                 child: SvgPicture.asset('assets/icons/arrow-left.svg')),
             SizedBox(
               width: 2.w(context),
@@ -34,7 +36,7 @@ class HeaderProfilePokemon extends StatelessWidget {
             ),
             const Spacer(),
             Text(
-              '#0${pokemon.id}',
+              formatID(pokemon.id),
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 16.sp,

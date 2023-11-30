@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
             title: 'Pokédex',
             theme: ThemeConfig().getTheme(),
             routes: getRoutes(),
-            initialRoute: RoutesList.dashboard,
+            initialRoute: RoutesList.splash,
             home: Container(),
           );
         },
