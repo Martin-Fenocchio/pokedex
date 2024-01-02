@@ -44,7 +44,6 @@ class PokemonBaseStatItem extends StatelessWidget {
             child: LinearProgressIndicator(
               backgroundColor: color.withOpacity(0.3),
               color: color,
-              borderRadius: BorderRadius.circular(10),
               minHeight: 1.h(context),
               value: stat['value'] / 100,
               semanticsLabel: 'Linear progress indicator',

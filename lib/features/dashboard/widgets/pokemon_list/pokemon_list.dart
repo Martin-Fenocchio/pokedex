@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:pokedex/features/dashboard/cubit/dashboard_cubit.dart';
 import 'package:pokedex/features/dashboard/widgets/pokemon_item/pokemon_item.dart';
 import 'package:pokedex/features/dashboard/widgets/pokemon_item/pokemon_item_skeleton.dart';
 import 'package:pokedex/utils/responsive/responsive.dart';
+import 'package:pokedex/utils/theme/theme.dart';
 
 class PokemonList extends StatefulWidget {
   const PokemonList({super.key});
@@ -71,6 +73,13 @@ class _PokemonListState extends State<PokemonList> {
               const PokemonItemSkeleton()
           else
             for (final pokemon in pokemons) PokemonItem(pokemon: pokemon),
+          if (cubit.state.isLoading)
+            LoadingAnimationWidget.discreteCircle(
+              color: colorPmy(context),
+              size: 8.w(context),
+              secondRingColor: colorPmy(context),
+              thirdRingColor: colorPmy(context),
+            )
         ],
       ),
     );

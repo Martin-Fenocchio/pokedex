@@ -15,8 +15,8 @@ class PokemonProfileScreen extends StatelessWidget {
       backgroundColor: pokemon.getPokemonPrimaryColor(),
       body: Stack(
         children: [
-          const Column(
-            children: [
+          Column(
+            children: const [
               BannerProfile(),
               PokemonStats(),
             ],

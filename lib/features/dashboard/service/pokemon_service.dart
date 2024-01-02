@@ -3,7 +3,7 @@ import 'package:pokedex/features/dashboard/models/pokemon_model.dart';
 import 'package:pokedex/utils/pokemon/pokemon_utils.dart';
 
 class PokemonService {
-  Future<dynamic> getPokemons() async {
+  Future<dynamic> getPokemonsNames() async {
     final response =
         await Dio().get('https://pokeapi.co/api/v2/pokemon?limit=200');
 
